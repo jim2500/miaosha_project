@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- context 用于设置生成一组对象的环境 -->
+    <!--驱动在磁盘中的位置-->
+    <classPathEntry location="C:\Users\T470s\.m2\repository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar" />
+    <context id="softwaredb" targetRuntime="MyBatis3">
+       <!-- &lt;!&ndash; PO序列化 &ndash;&gt;
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+        </plugin>
+        <commentGenerator>
+            &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>-->
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <!-- 配置数据源 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/miaosha" userId="root" password="28281995sj">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 配置dataObject类存放的位置 -->
+        <!--<javaModelGenerator targetPackage="com.miaoshaproject.dataobject" targetProject="src/main/java" />-->
+        <javaModelGenerator targetPackage="com.miaoshaproject.dataobject" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 配置生成映射文件存放的位置 -->
+        <!--<sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources"/>-->
+
+        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 配置生成Dao类存放的位置 -->
+        <!--<javaClientGenerator
+                targetPackage="com.miaoshaproject.dao"
+                targetProject="ConferSys"
+                type="XMLMAPPER" />-->
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.miaoshaproject.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--生成对应表及类名-->
+        <table   tableName="user_info" domainObjectName="UserDO" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table  tableName="user_password" domainObjectName="UserPasswordDO" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
