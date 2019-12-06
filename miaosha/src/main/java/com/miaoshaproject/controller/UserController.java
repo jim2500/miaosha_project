@@ -58,7 +58,7 @@ public class UserController extends BaseController {
         this.httpServletRequest.getSession().setAttribute("IS_LOGIN",true);
         this.httpServletRequest.getSession().setAttribute("LOGIN_USER",userModel);
 
-        return CommonReturnType.creat(null);
+        return CommonReturnType.create(null);
     }
 
     //用户注册接口
@@ -91,7 +91,7 @@ public class UserController extends BaseController {
 
         userService.register(userModel);
 
-        return CommonReturnType.creat(null);
+        return CommonReturnType.create(null);
     }
 
     //密码加密方法
@@ -118,7 +118,7 @@ public class UserController extends BaseController {
         //将OTP验证码通过短信通道发送给用户，省略
         System.out.println("telphone: "+telphone+"otpcode: "+otpCode);
 
-        return CommonReturnType.creat(null);
+        return CommonReturnType.create(null);
     }
 
 
@@ -137,7 +137,7 @@ public class UserController extends BaseController {
         UserVO userVO =  convertFromModel(userModel);
 
         //返回通用对象
-        return CommonReturnType.creat(userVO);
+        return CommonReturnType.create(userVO);
     }
 
     private UserVO convertFromModel(UserModel userModel){

@@ -13,7 +13,7 @@ public class CommonReturnType {
     private Object data;
 
     //定义一个通用的创建方法
-    public static CommonReturnType creat(Object result){
+    public static CommonReturnType create(Object result){
         return CommonReturnType.create(result,"success");
     }
 
