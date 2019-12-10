@@ -48,6 +48,11 @@
 					<label class="control-label" id="sales"/>
 				</div>
 			</div>
+			<div class="form-actions">
+				<button class="btn blue" id="createorder" type="submit">
+					购买商品
+				</button>
+			</div>	
 		</div>
 	</body>
 	<script>
@@ -60,7 +65,44 @@
 		}
 
 		jQuery(document).ready(function(){
-			//绑定otp的click时间用于向后端发送获取手机验证码的请求
+			
+				$("#createorder").on("click",function(){
+					$.ajax({
+						//请求头
+						type:"POST",
+						contentType:"application/x-www-form-urlencoded",
+						url:"http://localhost:8090/order/createorder",
+						
+						//传参
+						data:{
+							"itemId":g_itemVO.id,
+							"amount":"1",
+							
+						},
+
+						//允许跨域授信请求
+						xhrFields:{withCredentials:true},
+
+						//两个回调，请求成功和请求失败
+						success:function(data){
+							if(data.status == "success"){
+								alert("下单成功");
+								window.location.reload();
+							}else{
+								alert("下单失败，原因是"+data.data.errMsg);
+								if(data.data.errCode == 20003){
+									window.location.href="login.html";
+								}
+								
+							}
+						},
+						error:function(data){
+							alert("下单失败，原因是"+data.responseText);
+
+						}
+					});
+				});
+
 				$.ajax({
 					//请求头
 					type:"GET",

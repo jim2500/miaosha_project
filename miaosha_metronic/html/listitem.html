@@ -29,7 +29,11 @@
 					</tbody>
 				</table>
 			</div>
-			
+			<div class="form-actions">
+				<button class="btn blue" id="createItem" type="submit">
+					创建商品
+				</button>
+			</div>			
 			
 		</div>
 	</body>
@@ -37,7 +41,11 @@
 		//定义全局商品数组信息
 		var g_itemList = [];
 		jQuery(document).ready(function(){
-			
+			$("#createItem").on("click",function(){
+				window.location.href="createitem.html";
+			});
+
+
 			$.ajax({
 				//请求头
 				type:"GET",
